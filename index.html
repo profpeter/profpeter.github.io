@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +15,7 @@
   }
 
   #bigButton {
-    background-color: red; border: none; color: black; padding: 1px; text-align: center;
+    background-color: aqua; border: none; color: black; padding: 1px; text-align: center;
     text-decoration: none; font-size: 6px; margin: 12px 20px; height: 15px; width: 30px;
     border-radius: 10%; outline:none; font-family: 'Roboto', sans-serif;
   }
@@ -76,13 +75,16 @@
 <body>
 
   <div class="container">
-    
+    <div class="label">&nbsp;&nbsp;IMPORTANT - first upload <a href="https://create.arduino.cc/editor/dpajak/e4128780-d76d-438f-97a4-541740cb0473/preview">sketch</a> to Arduino Nano 33 BLE Sense board<br></div>
     <div class="status widget">
       <button id="bigButton"></button>
-      <div class="label" id="bluetooth">Click to enable IOT Zoo Sensor</div>
+      <div class="label" id="bluetooth">Click button to connect to the board</div>
     </div>
 
-  
+    <div class="square widget" id="3d">
+      <div class="label">&#128230;3D</div>
+    </div>
+
     <div class="double widget">
       <div class="label">&#128640; Accelerometer</div>
       <div id="accelerometer" class="doublegraph"></div>
@@ -93,13 +95,27 @@
       <div id="gyroscope" class="graph"></div>
     </div>
 
-   
+    <div class="square widget">
+      <div class="label">&#128161; RGB LED control</div>
+      <div id="color-picker-container" class="graph"></div>
+    </div>
+
     <div class="square widget">
       <div class="label">&#127897;Microphone</div>
       <div style="position: relative;">
         <canvas id="mic" class="graph" style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
         <canvas id="micbg" class="graph" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
       </div>
+    </div>
+
+    <div class="square widget">
+      <div class="label">&#128250;Spectrogram</div>
+      <canvas id="spectrogram" class="graph"></canvas>
+    </div>
+
+    <div class="square widget">
+      <div class="label">&#127912;Colorimeter</div>
+      <canvas id="colors" class="graph"></canvas>
     </div>
 
     <div class="short widget">
@@ -133,7 +149,13 @@
   </div>
 </body>
 <script type="text/javascript">
+/*
+Demo showing simple dashboard of Arduino BLE sense
 
+Based on: https://developers.google.com/web/updates/2015/07/interact-with-ble-devices-on-the-web
+For earlier versions of Windows and Linux, you still have to go to chrome://flags/#enable-experimental-web-platform-features,
+enable the highlighted flag, and restart Chrome for now.
+*/
 
 
 
